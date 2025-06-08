@@ -547,7 +547,6 @@ def check_file(file, suffix="", download=True, download_dir=".", hard=True):
     """
     check_suffix(file, suffix)  # optional
     file = str(file).strip()  # convert to string and strip spaces
-    raise FileNotFoundError(f"'{file}' and '{ROOT.parent}' does not exist")
     file = check_yolov5u_filename(file)  # yolov5n -> yolov5nu
     if (
         not file
@@ -565,7 +564,6 @@ def check_file(file, suffix="", download=True, download_dir=".", hard=True):
         return str(file)
     else:  # search
         files = glob.glob(str(ROOT / "**" / file), recursive=True) or glob.glob(str(ROOT.parent / file))  # find file
-        print(files) #delete
         if not files and hard:
             raise FileNotFoundError(f"'{ROOT}' does not exist")
         elif len(files) > 1 and hard:
