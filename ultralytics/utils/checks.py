@@ -547,7 +547,7 @@ def check_file(file, suffix="", download=True, download_dir=".", hard=True):
     """
     check_suffix(file, suffix)  # optional
     file = str(file).strip()  # convert to string and strip spaces
-    print(str(file)) #delete
+    raise FileNotFoundError(f"'{file}' and '{ROOT}' does not exist")
     file = check_yolov5u_filename(file)  # yolov5n -> yolov5nu
     if (
         not file
