@@ -564,7 +564,7 @@ def check_file(file, suffix="", download=True, download_dir=".", hard=True):
             downloads.safe_download(url=url, file=file, unzip=False)
         return str(file)
     else:  # search
-        print(str(ROOT)) #delete
+        raise FileNotFoundError(f"'{ROOT}' does not exist, {files} too")
         files = glob.glob(str(ROOT / "**" / file), recursive=True) or glob.glob(str(ROOT.parent / file))  # find file
         print(files) #delete
         if not files and hard:
