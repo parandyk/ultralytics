@@ -568,7 +568,7 @@ def check_file(file, suffix="", download=True, download_dir=".", hard=True):
         files = glob.glob(str(ROOT / "**" / file), recursive=True) or glob.glob(str(ROOT.parent / file))  # find file
         print(files) #delete
         if not files and hard:
-            raise FileNotFoundError(f"'{file}' does not exist")
+            raise FileNotFoundError(f"'{ROOT}' does not exist")
         elif len(files) > 1 and hard:
             raise FileNotFoundError(f"Multiple files match '{file}', specify exact path: {files}")
         return files[0] if len(files) else []  # return file
