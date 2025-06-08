@@ -10,7 +10,7 @@ scales: # model compound scaling constants, i.e. 'model=yolo11n.yaml' will call 
   # [depth, width, max_channels]
   
   #new - qryzafup
-  g: [0.20, 0.15, 512] # summary: 181 layers, 2624080 parameters, 2624064 gradients, 6.6 GFLOPs
+  g: [0.20, 0.15, 784] # summary: 181 layers, 2624080 parameters, 2624064 gradients, 6.6 GFLOPs
   e: [0.25, 0.15, 1024] # summary: 181 layers, 2624080 parameters, 2624064 gradients, 6.6 GFLOPs
   d: [0.25, 0.15, 1024] # summary: 181 layers, 2624080 parameters, 2624064 gradients, 6.6 GFLOPs
   c: [0.35, 0.15, 1024] # summary: 181 layers, 2624080 parameters, 2624064 gradients, 6.6 GFLOPs
