@@ -1761,7 +1761,7 @@ def yaml_model_load(path):
     """
     path = Path(path)
     if path.stem in (f"yolov{d}{x}6" for x in "nsmlx" for d in (5, 8)):
-        new_stem = re.sub(r"(\d+)([nslmx])6(.+)?$", r"\1\2-p6\3", path.stem)
+        new_stem = re.sub(r"(\d+)([qryzafupnslmx])6(.+)?$", r"\1\2-p6\3", path.stem)
         LOGGER.warning(f"Ultralytics YOLO P6 models now use -p6 suffix. Renaming {path.stem} to {new_stem}.")
         path = path.with_name(new_stem + path.suffix)
 
