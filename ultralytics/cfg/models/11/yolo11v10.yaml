@@ -10,7 +10,7 @@ scales: # model compound scaling constants, i.e. 'model=yolo11n.yaml' will call 
   # [depth, width, max_channels]
   
   #new - qryzafup
-  g: [0.5, 0.5, 1024] # summary: 181 layers, 2624080 parameters, 2624064 gradients, 6.6 GFLOPs
+  g: [0.05, 0.15, 1024] # summary: 181 layers, 2624080 parameters, 2624064 gradients, 6.6 GFLOPs
   e: [0.25, 0.15, 1024] # summary: 181 layers, 2624080 parameters, 2624064 gradients, 6.6 GFLOPs
   d: [0.25, 0.15, 1024] # summary: 181 layers, 2624080 parameters, 2624064 gradients, 6.6 GFLOPs
   c: [0.35, 0.15, 1024] # summary: 181 layers, 2624080 parameters, 2624064 gradients, 6.6 GFLOPs
@@ -35,8 +35,8 @@ backbone:
   # [from, repeats, module, args]
   - [-1, 1, Conv, [32, 3, 2]] #- [-1, 1, Conv, [64, 3, 2]] # 0-P1/2
   - [-1, 1, Conv, [32, 3, 2]] #- [-1, 1, Conv, [64, 3, 2]] # 1-P2/4 #- [-1, 1, Conv, [128, 3, 2]] # 1-P2/4
-  - [-1, 2, C3k2, [64, False, 0.25]] #- [-1, 2, C3k2, [128, False, 0.25]] #- [-1, 2, C3k2, [256, False, 0.25]]
-  - [-1, 1, Conv, [64, 3, 2]] #- [-1, 1, Conv, [128, 3, 2]] # 3-P3/8 #- [-1, 1, Conv, [256, 3, 2]] # 3-P3/8
+  - [-1, 2, C3k2, [32, False, 0.25]] #- [-1, 2, C3k2, [128, False, 0.25]] #- [-1, 2, C3k2, [256, False, 0.25]]
+  - [-1, 1, Conv, [32, 3, 2]] #- [-1, 1, Conv, [128, 3, 2]] # 3-P3/8 #- [-1, 1, Conv, [256, 3, 2]] # 3-P3/8
   - [-1, 2, C3k2, [64, False, 0.25]] #- [-1, 2, C3k2, [256, False, 0.25]] #- [-1, 2, C3k2, [512, False, 0.25]]
   - [-1, 1, Conv, [64, 3, 2]] #- [-1, 1, Conv, [256, 3, 2]] # 5-P4/16 #- [-1, 1, Conv, [512, 3, 2]] # 5-P4/16
   - [-1, 2, C3k2, [128, True]] #- [-1, 2, C3k2, [512, True]]
@@ -65,11 +65,11 @@ head:
 
   - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
   - [[-1, 4], 1, Concat, [1]] # cat backbone P3
-  - [-1, 2, C3k2, [64, False]] # 16 (P3/8-small) #256
+  - [-1, 2, C3k2, [32, False]] # 16 (P3/8-small) #256
 
   - [-1, 1, Conv, [64, 3, 2]] #256
   - [[-1, 13], 1, Concat, [1]] # cat head P4
-  - [-1, 2, C3k2, [64, False]] # 19 (P4/16-medium) #512
+  - [-1, 2, C3k2, [32, False]] # 19 (P4/16-medium) #512
 
   - [-1, 1, Conv, [64, 3, 2]] #512
   - [[-1, 10], 1, Concat, [1]] # cat head P5
