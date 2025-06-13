@@ -1509,7 +1509,10 @@ class C2PSA(nn.Module):
         """
         super().__init__()
         assert c1 == c2
+        print(f"c1: {c1}") #for deletion
+        print(f"c2: {c2}") #for deletion
         self.c = int(c1 * e)
+        print(f"self.c: {self.c}") #for deletion
         self.cv1 = Conv(c1, 2 * self.c, 1, 1)
         self.cv2 = Conv(2 * self.c, c1, 1)
 
