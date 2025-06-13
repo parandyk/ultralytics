@@ -1328,7 +1328,7 @@ class Attention(nn.Module):
         """
         super().__init__()
         self.num_heads = num_heads
-        self.head_dim = dim // num_heads
+        self.head_dim = dim // num_heads if dim >= num_heads else int(1/attn_ratio) #new
         self.key_dim = int(self.head_dim * attn_ratio)
         self.scale = self.key_dim**-0.5
         nh_kd = self.key_dim * num_heads
