@@ -1327,11 +1327,13 @@ class Attention(nn.Module):
             attn_ratio (float): Attention ratio for key dimension.
         """
         super().__init__()
-        self.num_heads = 8
+        #self.num_heads = 8
         # if dim >= num_heads: #new
         #     self.head_dim = dim // self.num_heads #new
         # else: #new
-        self.head_dim = 16 #int(1/attn_ratio) #new
+        #self.head_dim = 16 #int(1/attn_ratio) #new
+        self.num_heads = num_heads
+        self.head_dim = dim // self.num_heads
         self.key_dim = int(self.head_dim * attn_ratio)
         self.scale = self.key_dim**-0.5
         nh_kd = self.key_dim * num_heads
