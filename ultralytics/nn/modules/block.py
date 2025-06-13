@@ -1329,7 +1329,7 @@ class Attention(nn.Module):
         super().__init__()
         self.num_heads = 8 #num_heads
         if dim >= num_heads: #new
-            self.head_dim = dim // num_heads #new
+            self.head_dim = dim // self.num_heads #new
         else: #new
             self.head_dim = 16 #int(1/attn_ratio) #new
         self.key_dim = int(self.head_dim * attn_ratio)
