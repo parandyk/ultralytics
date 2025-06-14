@@ -1355,7 +1355,7 @@ class Attention(nn.Module):
         B, C, H, W = x.shape
         N = H * W
         qkv = self.qkv(x)
-        print(f"qkv.shape: {qkv}")
+        print(f"qkv.shape: {qkv.shape}")
         print(f"self.num_heads: {self.num_heads}")
         print(f"self.key_dim: {self.key_dim}")
         print(f"N: {N}")
