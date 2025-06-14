@@ -1355,6 +1355,10 @@ class Attention(nn.Module):
         B, C, H, W = x.shape
         N = H * W
         qkv = self.qkv(x)
+        print(f"q: {q}")
+        print(f"k: {k}")
+        print(f"v: {v}")
+        print(f"self.num_heads: {self.num_heads}")
         q, k, v = qkv.view(B, self.num_heads, self.key_dim * 2 + self.head_dim, N).split(
             [self.key_dim, self.key_dim, self.head_dim], dim=2
         )
