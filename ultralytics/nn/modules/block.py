@@ -1362,7 +1362,6 @@ class Attention(nn.Module):
         print(f"q: {q}")
         print(f"k: {k}")
         print(f"v: {v}")
-        )
 
         attn = (q.transpose(-2, -1) @ k) * self.scale
         attn = attn.softmax(dim=-1)
