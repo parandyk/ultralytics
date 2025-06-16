@@ -35,11 +35,11 @@ backbone:
 head:
   - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
   - [[-1, 6], 1, Concat, [1]] # cat backbone P4
-  - [-1, 2, C3k2, [24, False]] # 13 #512
+  - [-1, 2, C3k2, [32, False]] # 13 #512
 
   - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
   - [[-1, 4], 1, Concat, [1]] # cat backbone P3
-  - [-1, 2, C3k2, [32, False]] # 16 (P3/8-small) #256
+  - [-1, 2, C3k2, [48, False]] # 16 (P3/8-small) #256
 
   - [-1, 1, Conv, [48, 3, 2]]
   - [[-1, 13], 1, Concat, [1]] # cat head P4
@@ -49,7 +49,7 @@ head:
   - [[-1, 10], 1, Concat, [1]] # cat head P5
   - [-1, 2, C3k2, [64, True]] # 22 (P5/32-large)
   
-  - [[3, 3, 3], 1, Detect, [nc]] # Detect(P3, P4, P5)
+  - [[5, 7, 9], 1, Detect, [nc]] # Detect(P3, P4, P5)
   # 2 1 1 daje 9.1 gflop
   # 1 2 1 daje 9.0 gflop
   # 1 1 2 daje 9.0 gflop
